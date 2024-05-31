@@ -3,32 +3,48 @@ import "./style.module.css";
 import BagPack from "@/components/svgs/BagPack";
 import Pencil from "@/components/svgs/Pencil";
 import s from "./style.module.css";
+import { Item, ItemName } from "@/types/items";
+import NoteBook from "@/components/svgs/Notebook";
+import Book from "@/components/svgs/Book";
+import Bottle from "@/components/svgs/Bottle";
+import Sandwich from "@/components/svgs/Sandwich";
+import Sport from "@/components/svgs/Sport";
 
-type Item = {
-  moved: boolean;
-  hidden: boolean;
-};
-
-enum ItemName {
-  PENCIL = "pencil",
-  NOTEBOOK = "notebook",
-}
-
-const DEFAULT_STATE: { [key in ItemName]: Item } = {
+const DEFAULT_ITEM_DETAILS: { [key in ItemName]: Item } = {
   [ItemName.PENCIL]: {
     moved: false,
     hidden: false,
+    component: <Pencil />,
   },
   [ItemName.NOTEBOOK]: {
     moved: false,
     hidden: false,
+    component: <NoteBook />,
+  },
+  [ItemName.BOOK]: {
+    moved: false,
+    hidden: false,
+    component: <Book />,
+  },
+  [ItemName.BOTTLE]: {
+    moved: false,
+    hidden: false,
+    component: <Bottle />,
+  },
+  [ItemName.SANDWICH]: {
+    moved: false,
+    hidden: false,
+    component: <Sandwich />,
+  },
+  [ItemName.SPORT]: {
+    moved: false,
+    hidden: false,
+    component: <Sport />,
   },
 };
 
 const BackToSchool = () => {
-  const [pencilMoved, setPencilMoved] = useState(false);
-  const [hidePencil, setHidePencil] = useState(false);
-  const [itemDetails, setItemDetails] = useState(DEFAULT_STATE);
+  const [itemDetails, setItemDetails] = useState(DEFAULT_ITEM_DETAILS);
 
   const onHandleClick = (item: ItemName) => {
     const itemDetailsCopy = { ...itemDetails[item] };
@@ -53,15 +69,20 @@ const BackToSchool = () => {
       <div className={s.bagPack}>
         <BagPack />
       </div>
-      <div
-        className={`${
-          itemDetails[ItemName.PENCIL].moved ? s.moved : s.pencil
-        } ${itemDetails[ItemName.PENCIL].hidden ? s.noDisplay : ""}`}
-        onClick={() => onHandleClick(ItemName.PENCIL)}
-        onTransitionEnd={() => onHandleTransitionEnd(ItemName.PENCIL)}
-      >
-        <Pencil />
-      </div>
+      {Object.keys(DEFAULT_ITEM_DETAILS).map((key: string) => {
+        const name = key as ItemName;
+        return (
+          <div
+            className={`${itemDetails[name].moved ? s.moved : s[name]} ${
+              itemDetails[name].hidden ? s.noDisplay : ""
+            }`}
+            onClick={() => onHandleClick(name)}
+            onTransitionEnd={() => onHandleTransitionEnd(name)}
+          >
+            {DEFAULT_ITEM_DETAILS[name].component}
+          </div>
+        );
+      })}
     </div>
   );
 };

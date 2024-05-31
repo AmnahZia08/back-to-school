@@ -10,8 +10,28 @@
   @apply absolute left-[10%] top-[10%] transform transition-all duration-500;
 }
 
+.notebook {
+  @apply absolute left-[20%] top-[60%] transform transition-all duration-500;
+}
+
+.book {
+  @apply absolute left-[80%] top-[20%] transform transition-all duration-500;
+}
+
+.bottle {
+  @apply absolute left-[90%] top-[80%] transform transition-all duration-500;
+}
+
+.sandwich {
+  @apply absolute left-[30%] top-[30%] transform transition-all duration-500;
+}
+
+.sport {
+  @apply absolute left-[70%] top-[70%] transform transition-all duration-500;
+}
+
 .moved {
-  @apply absolute left-[43%] top-[40%] transition-all duration-500;
+  @apply absolute left-[45%] top-[50%] transition-all duration-500;
 }
 
 .noDisplay {
