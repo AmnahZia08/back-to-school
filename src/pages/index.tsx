@@ -1,12 +1,27 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
+import { useState } from "react";
+import Button from "@/components/Button";
+import Modal from "@/components/Modal";
 
-const inter = Inter({ subsets: ["latin"] });
+type Props = {
+  isOpen: false;
+};
 
-export default function Home() {
+const Home: React.FC<Props> = ({ isOpen: initialOpen }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(initialOpen);
+
+  const handleOpenModal = () => setIsOpen(true);
+  const handleCloseModal = () => setIsOpen(false);
+
   return (
-    <div className="w-screen h-screen bg-doodle">
-      <p>This is my home page</p>
+    <div className="w-screen h-screen bg-doodle flex justify-center items-center">
+      {isOpen && <Modal isOpen={isOpen} onClose={handleCloseModal} />}
+      <Button onClick={handleOpenModal}>Click here for some magic</Button>
     </div>
   );
+};
+
+export async function getServerSideProps() {
+  return { props: { isOpen: false } };
 }
+
+export default Home;

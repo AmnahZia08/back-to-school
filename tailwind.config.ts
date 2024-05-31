@@ -9,7 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "doodle": "url('../../public/assets/doodle.jpg')"
+        doodle: "url('../../public/assets/doodle.jpg')",
+      },
+      colors: {
+        primary: "#272b44",
       },
     },
   },
