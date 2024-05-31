@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./style.module.css";
 import BagPack from "@/components/svgs/BagPack";
-import Pencil from "@/components/svgs/pencil";
+import Pencil from "@/components/svgs/Pencil";
 import s from "./style.module.css";
 
 const BackToSchool = () => {
   const [pencilMoved, setPencilMoved] = useState(false);
+  const [hidePencil, setHidePencil] = useState(false);
 
   const onClick = () => {
     setTimeout(() => setPencilMoved(true), 300);
@@ -16,7 +17,13 @@ const BackToSchool = () => {
       <div className={s.bagPack}>
         <BagPack />
       </div>
-      <div className={pencilMoved ? s.moved : s.pencil} onClick={onClick}>
+      <div
+        className={`${pencilMoved ? s.moved : s.pencil} ${
+          hidePencil ? s.noDisplay : ""
+        }`}
+        onClick={onClick}
+        onTransitionEnd={() => setHidePencil(true)}
+      >
         <Pencil />
       </div>
     </div>
