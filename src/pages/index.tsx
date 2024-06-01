@@ -27,7 +27,11 @@ const Home: React.FC<Props> = ({ isOpen: initialOpen }) => {
           onAction={onModalAction}
         />
       )}
-      <Button onClick={handleOpenModal}>Are you ready to get back to school?</Button>
+      {!isOpen && (
+        <Button className="mx-8" onClick={handleOpenModal}>
+          Are you ready to get back to school? Click here
+        </Button>
+      )}
     </div>
   );
 };
