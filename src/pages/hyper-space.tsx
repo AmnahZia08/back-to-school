@@ -26,7 +26,7 @@ const Sphere = () => {
 
 const ThreeScene = () => {
   return (
-    <div className="w-screen h-screen bg-doodle flex justify-end items-end ">
+    <div className="w-screen h-dvh bg-doodle flex justify-end items-end ">
       <Tag>GIVE IT A SPIN!</Tag>
       <Canvas
         shadows

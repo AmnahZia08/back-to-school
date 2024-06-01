@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-import "./style.module.css";
 import s from "./style.module.css";
 import Tag from "@/components/Tag";
 import Button from "@/components/Button";
@@ -54,7 +53,7 @@ const BackToSchool = () => {
   const [bagPackSize, setBagPackSize] = useState(18);
 
   const handleOnButtonClick = () => {
-    router.push("/HyperSpace");
+    router.push("/hyper-space");
   };
 
   const onHandleClick = (item: ItemName) => {
@@ -86,18 +85,18 @@ const BackToSchool = () => {
 
   if (allMoved)
     return (
-      <div className="w-screen h-screen bg-doodle flex justify-center items-center">
-        <Button onClick={handleOnButtonClick}>
+      <div className="w-screen h-dvh bg-doodle flex justify-center items-center">
+        <Button onClick={handleOnButtonClick} className="mx-8">
           You are all set! Click here for some more fun!
         </Button>
       </div>
     );
 
   return (
-    <div className="w-screen h-screen bg-doodle relative flex justify-end items-end">
+    <div className="w-screen h-dvh bg-doodle relative flex justify-end items-end">
       <Tag>CLICK ON THE ITEMS TO PUT THEM IN YOUR BAG</Tag>
       <div
-        className={`${s.bagPack} h-screen w-screen flex justify-center items-center`}
+        className={`${s.bagPack} h-dvh w-screen flex justify-center items-center`}
       >
         <BagPack
           height={bagPackSize}

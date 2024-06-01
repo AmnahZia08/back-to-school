@@ -16,11 +16,11 @@ const Home: React.FC<Props> = ({ isOpen: initialOpen }) => {
   const handleCloseModal = () => setIsOpen(false);
 
   const onModalAction = () => {
-    router.push("/BackToSchool");
+    router.push("/back-to-school");
   };
 
   return (
-    <div className="w-screen h-screen bg-doodle flex justify-center items-center">
+    <div className="w-screen h-dvh bg-doodle flex justify-center items-center">
       {isOpen && (
         <Modal
           isOpen={isOpen}
