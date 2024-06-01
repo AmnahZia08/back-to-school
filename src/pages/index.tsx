@@ -15,7 +15,7 @@ const Home: React.FC<Props> = ({ isOpen: initialOpen }) => {
   const handleCloseModal = () => setIsOpen(false);
 
   const onModalAction = () => {
-    router.push("/HyperSpace");
+    router.push("/BackToSchool");
   };
 
   return (
@@ -27,7 +27,7 @@ const Home: React.FC<Props> = ({ isOpen: initialOpen }) => {
           onAction={onModalAction}
         />
       )}
-      <Button onClick={handleOpenModal}>Click here for some magic</Button>
+      <Button onClick={handleOpenModal}>Are you ready to get back to school?</Button>
     </div>
   );
 };
