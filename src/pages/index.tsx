@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Button from "@/components/Button";
-import Modal from "@/components/Modal";
 import { useRouter } from "next/router";
+
+import Modal from "@/components/Modal";
+import Button from "@/components/Button";
 
 type Props = {
   isOpen: false;
@@ -27,7 +28,11 @@ const Home: React.FC<Props> = ({ isOpen: initialOpen }) => {
           onAction={onModalAction}
         />
       )}
-      <Button onClick={handleOpenModal}>Are you ready to get back to school?</Button>
+      {!isOpen && (
+        <Button className="mx-8" onClick={handleOpenModal}>
+          Are you ready to get back to school? Click here
+        </Button>
+      )}
     </div>
   );
 };

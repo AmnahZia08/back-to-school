@@ -1,13 +1,13 @@
 .bagPack {
-  @apply absolute left-[43%] top-[40%] transform transition-transform;
+  @apply absolute transform transition-transform;
 }
 
-.bagPack:hover {
+.hover:hover {
   transform: translateY(5px);
 }
 
 .pencil {
-  @apply absolute left-[10%] top-[10%] transform transition-all duration-500;
+  @apply absolute left-[20%] top-[10%] transform transition-all duration-500;
 }
 
 .notebook {
@@ -15,11 +15,11 @@
 }
 
 .book {
-  @apply absolute left-[80%] top-[20%] transform transition-all duration-500;
+  @apply absolute left-[60%] top-[20%] transform transition-all duration-500;
 }
 
 .bottle {
-  @apply absolute left-[90%] top-[80%] transform transition-all duration-500;
+  @apply absolute left-[70%] top-[40%] transform transition-all duration-500;
 }
 
 .sandwich {
@@ -27,7 +27,7 @@
 }
 
 .sport {
-  @apply absolute left-[70%] top-[70%] transform transition-all duration-500;
+  @apply absolute left-[45%] top-[70%] transform transition-all duration-500;
 }
 
 .moved {

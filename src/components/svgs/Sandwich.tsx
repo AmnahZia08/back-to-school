@@ -3,8 +3,8 @@ import * as React from "react";
 const Sandwich = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={80}
-    height={80}
+    width={"10vw"}
+    height={"10vh"}
     aria-hidden="true"
     className="iconify iconify--noto"
     viewBox="0 0 128 128"

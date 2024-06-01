@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
-import "./style.module.css";
-import BagPack from "@/components/svgs/BagPack";
-import Pencil from "@/components/svgs/Pencil";
-import s from "./style.module.css";
-import { Item, ItemName } from "@/types/items";
-import NoteBook from "@/components/svgs/Notebook";
-import Book from "@/components/svgs/Book";
-import Bottle from "@/components/svgs/Bottle";
-import Sandwich from "@/components/svgs/Sandwich";
-import Sport from "@/components/svgs/Sport";
-import Button from "@/components/Button";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+
+import "./style.module.css";
+import s from "./style.module.css";
+import Tag from "@/components/Tag";
+import Button from "@/components/Button";
+import Book from "@/components/svgs/Book";
+import Sport from "@/components/svgs/Sport";
+import Bottle from "@/components/svgs/Bottle";
+import Pencil from "@/components/svgs/Pencil";
+import { Item, ItemName } from "@/types/items";
+import BagPack from "@/components/svgs/BagPack";
+import NoteBook from "@/components/svgs/Notebook";
+import Sandwich from "@/components/svgs/Sandwich";
 
 const DEFAULT_ITEM_DETAILS: { [key in ItemName]: Item } = {
   [ItemName.PENCIL]: {
@@ -49,6 +51,7 @@ const BackToSchool = () => {
   const router = useRouter();
   const [itemDetails, setItemDetails] = useState(DEFAULT_ITEM_DETAILS);
   const [allMoved, setAllMoved] = useState(false);
+  const [bagPackSize, setBagPackSize] = useState(18);
 
   const handleOnButtonClick = () => {
     router.push("/HyperSpace");
@@ -66,6 +69,7 @@ const BackToSchool = () => {
 
   const onHandleTransitionEnd = (item: ItemName) => {
     const itemDetailsCopy = { ...itemDetails[item] };
+    setBagPackSize(bagPackSize + 1);
     setItemDetails({
       ...itemDetails,
       [item]: { ...itemDetailsCopy, hidden: true },
@@ -90,9 +94,16 @@ const BackToSchool = () => {
     );
 
   return (
-    <div className="w-screen h-screen bg-doodle relative">
-      <div className={s.bagPack}>
-        <BagPack />
+    <div className="w-screen h-screen bg-doodle relative flex justify-end items-end">
+      <Tag>CLICK ON THE ITEMS TO PUT THEM IN YOUR BAG</Tag>
+      <div
+        className={`${s.bagPack} h-screen w-screen flex justify-center items-center`}
+      >
+        <BagPack
+          height={bagPackSize}
+          width={bagPackSize}
+          className={`${s.hover}`}
+        />
       </div>
       {Object.keys(DEFAULT_ITEM_DETAILS).map((key: string) => {
         const name = key as ItemName;
@@ -105,7 +116,9 @@ const BackToSchool = () => {
             onClick={() => onHandleClick(name)}
             onTransitionEnd={() => onHandleTransitionEnd(name)}
           >
-            {DEFAULT_ITEM_DETAILS[name].component}
+            <div className={s.hover}>
+              {DEFAULT_ITEM_DETAILS[name].component}
+            </div>
           </div>
         );
       })}

@@ -1,8 +1,6 @@
-import { ReactNode } from "react";
-
 type Props = {
   onClick: () => void;
-  children: ReactNode;
+  children: string;
   className?: string;
 };
 

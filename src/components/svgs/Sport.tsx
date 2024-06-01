@@ -2,8 +2,8 @@ import * as React from "react";
 const Sport = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={80}
-    height={80}
+    width={"15vw"}
+    height={"15vh"}
     viewBox="0 0 72 72"
     {...props}
   >
