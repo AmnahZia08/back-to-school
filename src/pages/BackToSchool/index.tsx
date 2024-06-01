@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
-import "./style.module.css";
-import BagPack from "@/components/svgs/BagPack";
-import Pencil from "@/components/svgs/Pencil";
-import s from "./style.module.css";
-import { Item, ItemName } from "@/types/items";
-import NoteBook from "@/components/svgs/Notebook";
-import Book from "@/components/svgs/Book";
-import Bottle from "@/components/svgs/Bottle";
-import Sandwich from "@/components/svgs/Sandwich";
-import Sport from "@/components/svgs/Sport";
-import Button from "@/components/Button";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+
+import "./style.module.css";
+import s from "./style.module.css";
 import Tag from "@/components/Tag";
+import Button from "@/components/Button";
+import Book from "@/components/svgs/Book";
+import Sport from "@/components/svgs/Sport";
+import Bottle from "@/components/svgs/Bottle";
+import Pencil from "@/components/svgs/Pencil";
+import { Item, ItemName } from "@/types/items";
+import BagPack from "@/components/svgs/BagPack";
+import NoteBook from "@/components/svgs/Notebook";
+import Sandwich from "@/components/svgs/Sandwich";
 
 const DEFAULT_ITEM_DETAILS: { [key in ItemName]: Item } = {
   [ItemName.PENCIL]: {

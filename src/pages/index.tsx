@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Button from "@/components/Button";
-import Modal from "@/components/Modal";
 import { useRouter } from "next/router";
+
+import Modal from "@/components/Modal";
+import Button from "@/components/Button";
 
 type Props = {
   isOpen: false;

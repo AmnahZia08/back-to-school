@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
 import { Mesh } from "three";
+import React, { useRef } from "react";
 import { OrbitControls } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+
 import Tag from "@/components/Tag";
 
 const Sphere = () => {
