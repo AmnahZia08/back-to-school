@@ -49,6 +49,7 @@ const BackToSchool = () => {
   const router = useRouter();
   const [itemDetails, setItemDetails] = useState(DEFAULT_ITEM_DETAILS);
   const [allMoved, setAllMoved] = useState(false);
+  const [bagPackSize, setBagPackSize] = useState(140);
 
   const handleOnButtonClick = () => {
     router.push("/HyperSpace");
@@ -66,6 +67,7 @@ const BackToSchool = () => {
 
   const onHandleTransitionEnd = (item: ItemName) => {
     const itemDetailsCopy = { ...itemDetails[item] };
+    setBagPackSize(bagPackSize + 2);
     setItemDetails({
       ...itemDetails,
       [item]: { ...itemDetailsCopy, hidden: true },
@@ -91,8 +93,10 @@ const BackToSchool = () => {
 
   return (
     <div className="w-screen h-screen bg-doodle relative">
-      <div className={s.bagPack}>
-        <BagPack />
+      <div
+        className={`${s.bagPack} h-screen w-screen flex justify-center items-center`}
+      >
+        <BagPack height={bagPackSize} width={bagPackSize} className={`${s.hover}`} />
       </div>
       {Object.keys(DEFAULT_ITEM_DETAILS).map((key: string) => {
         const name = key as ItemName;
@@ -105,7 +109,9 @@ const BackToSchool = () => {
             onClick={() => onHandleClick(name)}
             onTransitionEnd={() => onHandleTransitionEnd(name)}
           >
-            {DEFAULT_ITEM_DETAILS[name].component}
+            <div className={s.hover}>
+              {DEFAULT_ITEM_DETAILS[name].component}
+            </div>
           </div>
         );
       })}

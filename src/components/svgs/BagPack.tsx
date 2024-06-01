@@ -3,8 +3,8 @@ const SvgComponent = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlSpace="preserve"
-    width={180}
-    height={180}
+    width={props.width}
+    height={props.height}
     viewBox="0 0 504.123 504.123"
     {...props}
   >
