@@ -8,6 +8,7 @@ import Button from "@/components/Button";
 import Book from "@/components/svgs/Book";
 import Sport from "@/components/svgs/Sport";
 import Bottle from "@/components/svgs/Bottle";
+import Pencil from "@/components/svgs/Pencil";
 import { Item, ItemName } from "@/types/items";
 import BagPack from "@/components/svgs/BagPack";
 import NoteBook from "@/components/svgs/Notebook";
@@ -17,7 +18,7 @@ const DEFAULT_ITEM_DETAILS: { [key in ItemName]: Item } = {
   [ItemName.PENCIL]: {
     moved: false,
     hidden: false,
-    component: <NoteBook />,
+    component: <Pencil />,
   },
   [ItemName.NOTEBOOK]: {
     moved: false,
