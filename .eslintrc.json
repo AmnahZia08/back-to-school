@@ -59,7 +59,13 @@
     "no-var": "error",
     "require-await": "error",
     "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/exports": "error",
+    "@typescript-eslint/ban-ts-comment": [
+      "warn",
+      {
+        "ts-expect-error": "allow-with-description"
+      }
+    ]
   },
   "overrides": [
     {

@@ -64,7 +64,7 @@ const BackToSchool = () => {
     const itemName = item as ItemName;
     const itemDetailsCopy = { ...itemDetails };
     const itemCopy = itemDetailsCopy[itemName];
-    //@ts-expect-error
+    // @ts-expect-error
     itemCopy[key] = true;
     itemDetailsCopy[itemName] = itemCopy;
     setItemDetails(itemDetailsCopy);
