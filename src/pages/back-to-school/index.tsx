@@ -77,6 +77,7 @@ const BackToSchool = () => {
 
   const onHandleClick = (item: ItemName) => {
     updateItemState(item, "moved");
+    // Wait for the transition to end
     setTimeout(() => {
       setBagPackSize(bagPackSize + 1);
       updateItemState(item, "hidden");
