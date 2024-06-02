@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 import Button from "@/components/Button";
@@ -60,32 +60,28 @@ const BackToSchool = () => {
     router.push("/hyper-space");
   };
 
-  const onHandleClick = (item: ItemName) => {
-    const itemDetailsCopy = { ...itemDetails[item] };
-    setTimeout(() => {
-      setItemDetails({
-        ...itemDetails,
-        [item]: { ...itemDetailsCopy, moved: true },
-      });
-    }, 300);
-  };
-
-  const onHandleTransitionEnd = (item: ItemName) => {
-    const itemDetailsCopy = { ...itemDetails[item] };
-    setBagPackSize(bagPackSize + 1);
-    setItemDetails({
-      ...itemDetails,
-      [item]: { ...itemDetailsCopy, hidden: true },
-    });
-  };
-
-  useEffect(() => {
-    const allMoved = Object.values(itemDetails).every((item) => item.moved);
+  const updateItemState = (item: ItemName, key: string) => {
+    const itemName = item as ItemName;
+    const itemDetailsCopy = { ...itemDetails };
+    const itemCopy = itemDetailsCopy[itemName];
+    //@ts-expect-error
+    itemCopy[key] = true;
+    itemDetailsCopy[itemName] = itemCopy;
+    setItemDetails(itemDetailsCopy);
+    const allMoved = Object.values(itemDetailsCopy).every((item) => item.moved);
     if (allMoved) {
       // Wait for the last transition to end
       setTimeout(() => setAllMoved(true), 800);
     }
-  }, [JSON.stringify(itemDetails)]);
+  };
+
+  const onHandleClick = (item: ItemName) => {
+    updateItemState(item, "moved");
+    setTimeout(() => {
+      setBagPackSize(bagPackSize + 1);
+      updateItemState(item, "hidden");
+    }, 600);
+  };
 
   if (allMoved)
     return (
@@ -117,7 +113,6 @@ const BackToSchool = () => {
               itemDetails[name].hidden ? s.noDisplay : ""
             }`}
             onClick={() => onHandleClick(name)}
-            onTransitionEnd={() => onHandleTransitionEnd(name)}
           >
             <div className={s.hover}>
               {DEFAULT_ITEM_DETAILS[name].component}
