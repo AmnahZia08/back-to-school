@@ -1,9 +1,5 @@
 import * as React from "react";
 const SvgComponent = (props: React.SVGProps<SVGSVGElement>) => {
-  {
-    console.log(props.width, props.height);
-  }
-
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
