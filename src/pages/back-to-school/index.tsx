@@ -17,35 +17,34 @@ import {
 
 import s from "./style.module.css";
 
+const DEFAULT_DETAILS = {
+  moved: false,
+  hidden: false,
+};
+
 const DEFAULT_ITEM_DETAILS: { [key in ItemName]: Item } = {
   [ItemName.PENCIL]: {
-    moved: false,
-    hidden: false,
+    ...DEFAULT_DETAILS,
     component: <Pencil />,
   },
   [ItemName.NOTEBOOK]: {
-    moved: false,
-    hidden: false,
+    ...DEFAULT_DETAILS,
     component: <NoteBook />,
   },
   [ItemName.BOOK]: {
-    moved: false,
-    hidden: false,
+    ...DEFAULT_DETAILS,
     component: <Book />,
   },
   [ItemName.BOTTLE]: {
-    moved: false,
-    hidden: false,
+    ...DEFAULT_DETAILS,
     component: <Bottle />,
   },
   [ItemName.SANDWICH]: {
-    moved: false,
-    hidden: false,
+    ...DEFAULT_DETAILS,
     component: <Sandwich />,
   },
   [ItemName.SPORT]: {
-    moved: false,
-    hidden: false,
+    ...DEFAULT_DETAILS,
     component: <Sport />,
   },
 };
@@ -61,22 +60,22 @@ const BackToSchool = () => {
   };
 
   const updateItemState = (item: ItemName, key: string) => {
-    const itemName = item as ItemName;
-    const itemDetailsCopy = { ...itemDetails };
-    const itemCopy = itemDetailsCopy[itemName];
-    // @ts-expect-error
-    itemCopy[key] = true;
-    itemDetailsCopy[itemName] = itemCopy;
-    setItemDetails(itemDetailsCopy);
-    const allMoved = Object.values(itemDetailsCopy).every((item) => item.moved);
-    if (allMoved) {
-      // Wait for the last transition to end
-      setTimeout(() => setAllMoved(true), 800);
-    }
+    setItemDetails((prevState) => {
+      const updatedState = {
+        ...prevState,
+        [item]: { ...prevState[item], [key]: true },
+      };
+      if (Object.values(updatedState).every((item) => item.moved)) {
+        // Wait for the last transition to end
+        setTimeout(() => setAllMoved(true), 800);
+      }
+      return updatedState;
+    });
   };
 
   const onHandleClick = (item: ItemName) => {
     updateItemState(item, "moved");
+    // Wait for the transition to end
     setTimeout(() => {
       setBagPackSize(bagPackSize + 1);
       updateItemState(item, "hidden");

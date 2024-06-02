@@ -39,7 +39,7 @@ const Modal: React.FC<Props> = ({ isOpen, onClose, onAction }) => {
       <div
         className={`text-primary transform transition duration-300 ease-in-out border-primary rounded shadow-lg ${
           !isOpen ? "opacity-0" : "opacity-100"
-        } rounded-lg shadow-md mx-auto w-full max-w-sm p-4 bg-white dark:bg-gray-800 border-2`}
+        } rounded-lg shadow-md mx-auto w-full max-w-sm p-4 bg-white border-2`}
       >
         <p className="uppercase font-bold">Are you sure that you are ready?</p>
         <div className="flex gap-2 mt-5">
