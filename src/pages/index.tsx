@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
+
 import Button from "@/components/Button";
 import Modal from "@/components/Modal";
-import { useRouter } from "next/router";
 
 type Props = {
   isOpen: false;
@@ -15,24 +16,35 @@ const Home: React.FC<Props> = ({ isOpen: initialOpen }) => {
   const handleCloseModal = () => setIsOpen(false);
 
   const onModalAction = () => {
-    router.push("/BackToSchool");
+    router.push("/back-to-school");
   };
 
   return (
-    <div className="w-screen h-screen bg-doodle flex justify-center items-center">
-      {isOpen && (
-        <Modal
-          isOpen={isOpen}
-          onClose={handleCloseModal}
-          onAction={onModalAction}
-        />
-      )}
-      <Button onClick={handleOpenModal}>Are you ready to get back to school?</Button>
+    <div className="w-screen h-dvh bg-doodle">
+      {/* blur the background when the modal is opened */}
+      <div
+        className={`w-screen h-dvh ${
+          isOpen ? "backdrop-blur-[2px]" : ""
+        } flex justify-center items-center`}
+      >
+        {isOpen && (
+          <Modal
+            isOpen={isOpen}
+            onClose={handleCloseModal}
+            onAction={onModalAction}
+          />
+        )}
+        {!isOpen && (
+          <Button className="mx-8" onClick={handleOpenModal}>
+            Are you ready to get back to school? Click here
+          </Button>
+        )}
+      </div>
     </div>
   );
 };
 
-export async function getServerSideProps() {
+export function getServerSideProps() {
   return { props: { isOpen: false } };
 }
 

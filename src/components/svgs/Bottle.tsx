@@ -4,8 +4,8 @@ const Bottle = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlSpace="preserve"
-    width={90}
-    height={90}
+    width={"10vw"}
+    height={"10vh"}
     viewBox="0 0 404.187 404.187"
     {...props}
   >

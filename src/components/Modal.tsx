@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+
 import Button from "./Button";
 
 type Props = {
@@ -33,12 +34,12 @@ const Modal: React.FC<Props> = ({ isOpen, onClose, onAction }) => {
   return (
     <div
       ref={modalRef}
-      className={`fixed z-50 inset-0 overflow-y-auto px-4 sm:px-6 lg:px-8 transition duration-300 ease-in-out flex justify-center items-center ${isOpen} bg-gray-500 bg-opacity-50 dark:bg-opacity-75`}
+      className={`fixed z-50 inset-0 overflow-y-auto px-4 sm:px-6 lg:px-8 transition duration-300 ease-in-out flex justify-center items-center`}
     >
       <div
         className={`text-primary transform transition duration-300 ease-in-out border-primary rounded shadow-lg ${
           !isOpen ? "opacity-0" : "opacity-100"
-        } rounded-lg shadow-md mx-auto w-full max-w-sm p-4 bg-white dark:bg-gray-800 border-2`}
+        } rounded-lg shadow-md mx-auto w-full max-w-sm p-4 bg-white border-2`}
       >
         <p className="uppercase font-bold">Are you sure that you are ready?</p>
         <div className="flex gap-2 mt-5">
