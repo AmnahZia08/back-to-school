@@ -4,14 +4,16 @@ import React, { useEffect, useState } from "react";
 import s from "./style.module.css";
 import Tag from "@/components/Tag";
 import Button from "@/components/Button";
-import Book from "@/components/svgs/Book";
-import Sport from "@/components/svgs/Sport";
-import Bottle from "@/components/svgs/Bottle";
-import Pencil from "@/components/svgs/Pencil";
 import { Item, ItemName } from "@/types/items";
-import BagPack from "@/components/svgs/BagPack";
-import NoteBook from "@/components/svgs/Notebook";
-import Sandwich from "@/components/svgs/Sandwich";
+import {
+  Book,
+  Sport,
+  Bottle,
+  Pencil,
+  BagPack,
+  Sandwich,
+  NoteBook,
+} from "../../components/svgs";
 
 const DEFAULT_ITEM_DETAILS: { [key in ItemName]: Item } = {
   [ItemName.PENCIL]: {
