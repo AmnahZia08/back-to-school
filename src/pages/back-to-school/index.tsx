@@ -17,35 +17,34 @@ import {
 
 import s from "./style.module.css";
 
+const DEFAULT_DETAILS = {
+  moved: false,
+  hidden: false,
+};
+
 const DEFAULT_ITEM_DETAILS: { [key in ItemName]: Item } = {
   [ItemName.PENCIL]: {
-    moved: false,
-    hidden: false,
+    ...DEFAULT_DETAILS,
     component: <Pencil />,
   },
   [ItemName.NOTEBOOK]: {
-    moved: false,
-    hidden: false,
+    ...DEFAULT_DETAILS,
     component: <NoteBook />,
   },
   [ItemName.BOOK]: {
-    moved: false,
-    hidden: false,
+    ...DEFAULT_DETAILS,
     component: <Book />,
   },
   [ItemName.BOTTLE]: {
-    moved: false,
-    hidden: false,
+    ...DEFAULT_DETAILS,
     component: <Bottle />,
   },
   [ItemName.SANDWICH]: {
-    moved: false,
-    hidden: false,
+    ...DEFAULT_DETAILS,
     component: <Sandwich />,
   },
   [ItemName.SPORT]: {
-    moved: false,
-    hidden: false,
+    ...DEFAULT_DETAILS,
     component: <Sport />,
   },
 };
