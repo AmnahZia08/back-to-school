@@ -60,18 +60,17 @@ const BackToSchool = () => {
   };
 
   const updateItemState = (item: ItemName, key: string) => {
-    const itemName = item as ItemName;
-    const itemDetailsCopy = { ...itemDetails };
-    const itemCopy = itemDetailsCopy[itemName];
-    // @ts-expect-error
-    itemCopy[key] = true;
-    itemDetailsCopy[itemName] = itemCopy;
-    setItemDetails(itemDetailsCopy);
-    const allMoved = Object.values(itemDetailsCopy).every((item) => item.moved);
-    if (allMoved) {
-      // Wait for the last transition to end
-      setTimeout(() => setAllMoved(true), 800);
-    }
+    setItemDetails((prevState) => {
+      const updatedState = {
+        ...prevState,
+        [item]: { ...prevState[item], [key]: true },
+      };
+      if (Object.values(updatedState).every((item) => item.moved)) {
+        // Wait for the last transition to end
+        setTimeout(() => setAllMoved(true), 800);
+      }
+      return updatedState;
+    });
   };
 
   const onHandleClick = (item: ItemName) => {
