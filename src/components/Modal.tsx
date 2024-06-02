@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+
 import Button from "./Button";
 
 type Props = {

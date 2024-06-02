@@ -1,19 +1,21 @@
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
+import Button from "@/components/Button";
+import Tag from "@/components/Tag";
+import { Item, ItemName } from "@/types/items";
+
+import {
+  BagPack,
+  Book,
+  Bottle,
+  NoteBook,
+  Pencil,
+  Sandwich,
+  Sport,
+} from "../../components/svgs";
 
 import s from "./style.module.css";
-import Tag from "@/components/Tag";
-import Button from "@/components/Button";
-import { Item, ItemName } from "@/types/items";
-import {
-  Book,
-  Sport,
-  Bottle,
-  Pencil,
-  BagPack,
-  Sandwich,
-  NoteBook,
-} from "../../components/svgs";
 
 const DEFAULT_ITEM_DETAILS: { [key in ItemName]: Item } = {
   [ItemName.PENCIL]: {

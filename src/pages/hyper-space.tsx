@@ -1,9 +1,11 @@
-import { Mesh } from "three";
+/* eslint-disable */
+
 import React, { useRef } from "react";
-import { OrbitControls } from "@react-three/drei";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Mesh } from "three";
 
 import Tag from "@/components/Tag";
+import { OrbitControls } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
 
 const Sphere = () => {
   const mesh = useRef<Mesh>();
@@ -16,7 +18,7 @@ const Sphere = () => {
   });
 
   return (
-    //@ts-ignore
+    // @ts-expect-error
     <mesh ref={mesh} castShadow receiveShadow>
       <sphereGeometry args={[1, 32, 32]} />
       <meshStandardMaterial color={"white"} />
@@ -59,3 +61,5 @@ const ThreeScene = () => {
 };
 
 export default ThreeScene;
+
+/* eslint-enable */
