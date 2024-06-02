@@ -1,4 +1,5 @@
 /* eslint-disable */
+// to ignore non standared threejs tags
 
 import React, { useRef } from "react";
 import { Mesh } from "three";
