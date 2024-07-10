@@ -4,13 +4,9 @@ import { useRouter } from "next/router";
 import Button from "@/components/Button";
 import Modal from "@/components/Modal";
 
-type Props = {
-  isOpen: false;
-};
-
-const Home: React.FC<Props> = ({ isOpen: initialOpen }) => {
+const Home: React.FC = () => {
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState<boolean>(initialOpen);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleOpenModal = () => setIsOpen(true);
   const handleCloseModal = () => setIsOpen(false);
@@ -43,9 +39,5 @@ const Home: React.FC<Props> = ({ isOpen: initialOpen }) => {
     </div>
   );
 };
-
-export function getServerSideProps() {
-  return { props: { isOpen: false } };
-}
 
 export default Home;
